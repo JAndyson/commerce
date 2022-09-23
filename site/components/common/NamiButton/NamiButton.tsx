@@ -5,7 +5,7 @@ export default class Home extends React.Component<
   {},
   { currentDelegation: {}; NamiHasBeenInitialized: boolean }
 > {
-  constructor(props) {
+  constructor(props: {} | Readonly<{}>) {
     super(props)
 
     // set your key once then you are free to go
@@ -32,8 +32,6 @@ export default class Home extends React.Component<
       <div>
         {!this.state.NamiHasBeenInitialized ? (
           <p style={txtSty}>looking for Nami... 👀</p>
-        ) : this.state.currentDelegation.pool_id === '<your pool id>' ? (
-          <p style={txtSty}>Thank you for your support &#9829;</p>
         ) : (
           <button onClick={() => Wallet.enable(Wallet.Names.Nami)}>
             Connect
