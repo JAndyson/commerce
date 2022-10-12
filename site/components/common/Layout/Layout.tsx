@@ -17,6 +17,8 @@ import { MenuSidebarView } from '@components/common/UserNav'
 import type { Page } from '@commerce/types/page'
 import type { Category } from '@commerce/types/site'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
+import { connect } from 'http2'
+import { Nami } from '@harmonicpool/cardano-wallet-interface/src/Wallet'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -41,6 +43,10 @@ const ForgotPassword = dynamic(
 
 const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
   ...dynamicProps,
+})
+
+const NamiButton = dynamic(() => import('@components/common/NamiButton'), {
+  ssr: false,
 })
 
 const Modal = dynamic(() => import('@components/ui/Modal'), {
@@ -117,6 +123,9 @@ const Layout: React.FC<Props> = ({
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
+        <Button>
+          <NamiButton></NamiButton>
+        </Button>
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
