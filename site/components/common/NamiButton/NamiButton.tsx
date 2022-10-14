@@ -31,7 +31,7 @@ export default class Home extends React.Component<
     return (
       <div>
         {!this.state.NamiHasBeenInitialized ? (
-          <p style={txtSty}>Crpto Wallets Coming Soon...</p>
+          <p style={txtSty}>Crypto Wallets Coming Soon...</p>
         ) : (
           <button onClick={() => Wallet.enable(Wallet.Names.Nami)}>
             Connected!
