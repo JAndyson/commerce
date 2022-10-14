@@ -34,7 +34,7 @@ export default class Home extends React.Component<
           <p style={txtSty}>Crpto Wallets Coming Soon...</p>
         ) : (
           <button onClick={() => Wallet.enable(Wallet.Names.Nami)}>
-            Connect
+            Connected!
           </button>
         )}
       </div>
