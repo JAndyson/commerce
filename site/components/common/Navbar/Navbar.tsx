@@ -40,11 +40,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             <Searchbar />
           </div>
         )}
-        {process.env.COMMERCE_SEARCH_ENABLED && (
-        <div className="justify-center flex-1 hidden lg:flex">
-          <Searchbar id="mobile-search" />
-        </div>
-        )}
         <div className="flex items-center justify-end flex-1 space-x-8">
           <UserNav />
         </div>
