@@ -40,14 +40,14 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             <Searchbar />
           </div>
         )}
-        <div className="flex items-center justify-end flex-1 space-x-8">
-          <UserNav />
-        </div>
-       {process.env.COMMERCE_SEARCH_ENABLED && (
+        {process.env.COMMERCE_SEARCH_ENABLED && (
         <div className="flex pb-4 lg:px-6 lg:hidden">
           <Searchbar id="mobile-search" />
         </div>
-      )}
+        )}
+        <div className="flex items-center justify-end flex-1 space-x-8">
+          <UserNav />
+        </div>
       </div>
     </Container>
   </NavbarRoot>
