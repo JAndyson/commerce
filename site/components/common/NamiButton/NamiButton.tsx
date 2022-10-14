@@ -31,7 +31,7 @@ export default class Home extends React.Component<
     return (
       <div>
         {!this.state.NamiHasBeenInitialized ? (
-          <p style={txtSty}>looking for Nami... 👀</p>
+          <p style={txtSty}>Crpto Wallets Coming Soon...</p>
         ) : (
           <button onClick={() => Wallet.enable(Wallet.Names.Nami)}>
             Connect
@@ -55,5 +55,5 @@ const containerSty = {
 
 const txtSty = {
   fontFamily: 'Arial, sans-serif',
-  fontSize: '5vh',
+  fontSize: '2vh',
 }
