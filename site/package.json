@@ -11,12 +11,20 @@
     "prettier-fix": "prettier --write .",
     "find:unused": "npx next-unused"
   },
+  "browser": {
+    "fs": false,
+    "path": false
+  },
   "sideEffects": false,
   "dependencies": {
+    "@blueprintjs/core": "^4.10.2",
+    "@blueprintjs/icons": "^4.6.0",
+    "@emurgo/cardano-serialization-lib-asmjs": "10.0.4-beta.4",
     "@emurgo/cardano-serialization-lib-browser": "^11.0.5",
     "@harmonicpool/cardano-wallet-interface": "https://github.com/HarmonicPool/cardano-wallet-interface",
     "@radix-ui/react-dropdown-menu": "^0.1.6",
     "@react-spring/web": "^9.4.1",
+    "@sendgrid/mail": "^7.7.0",
     "@vercel/commerce": "^0.0.1",
     "@vercel/commerce-bigcommerce": "^0.0.1",
     "@vercel/commerce-commercejs": "^0.0.1",
@@ -29,7 +37,9 @@
     "@vercel/commerce-swell": "^0.0.1",
     "@vercel/commerce-vendure": "^0.0.1",
     "autoprefixer": "^10.4.2",
+    "blakejs": "^1.2.1",
     "body-scroll-lock": "^4.0.0-beta.0",
+    "buffer": "^6.0.3",
     "clsx": "^1.1.1",
     "email-validator": "^2.0.4",
     "js-cookie": "^3.0.1",
@@ -46,7 +56,8 @@
     "react-merge-refs": "^1.1.0",
     "react-use-measure": "^2.1.1",
     "tabbable": "^5.2.1",
-    "tailwindcss": "^3.0.13"
+    "tailwindcss": "^3.0.13",
+    "ts-form-validation": "^2.2.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.8",

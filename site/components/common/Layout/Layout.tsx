@@ -54,6 +54,11 @@ const Modal = dynamic(() => import('@components/ui/Modal'), {
   ssr: false,
 })
 
+const TxBuilder = dynamic(() => import('@components/common/TxBuilder'), {
+  ...dynamicProps,
+  ssr: false,
+})
+
 interface Props {
   pageProps: {
     pages?: Page[]
@@ -123,9 +128,6 @@ const Layout: React.FC<Props> = ({
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
-        <Button>
-          <NamiButton></NamiButton>
-        </Button>
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
