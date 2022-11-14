@@ -163,7 +163,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         html={product.descriptionHtml || product.description}
       />
       <div className="flex flex-row justify-between items-center">
-        <Rating value={4} />
+        <Rating value={5} />
         <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
       </div>
       <div>
