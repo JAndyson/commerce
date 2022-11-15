@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, useState } from 'react'
 import {
   Tab,
   Tabs,
@@ -7,6 +7,7 @@ import {
   FormGroup,
   InputGroup,
   NumericInput,
+  Colors,
 } from '@blueprintjs/core'
 import '@blueprintjs/core/lib/css/blueprint.css'
 import '@blueprintjs/icons/lib/css/blueprint-icons.css'
@@ -35,6 +36,7 @@ import {
   TransactionInputs,
   TransactionInput,
   TransactionWitnessSet,
+  TransactionMetadatum,
   Transaction,
   PlutusData,
   PlutusScripts,
@@ -59,6 +61,8 @@ import {
   StakeCredential,
 } from '@emurgo/cardano-serialization-lib-asmjs'
 import { blake2b } from 'blakejs'
+import { Button, Text, Rating, Collapse, useUI } from '@components/ui'
+import type { Product } from '@commerce/types/product'
 let Buffer = require('buffer').Buffer
 let blake = require('blakejs')
 
@@ -74,6 +78,7 @@ export default class App extends React.Component<any, any> {
     priceMem: number
     priceStep: number
     coinsPerUtxoWord: string
+    prod: Product
   }
   constructor(props: any) {
     super(props)
@@ -102,8 +107,8 @@ export default class App extends React.Component<any, any> {
       submittedTxHash: '',
 
       addressBech32SendADA:
-        'addr_test1qrt7j04dtk4hfjq036r2nfewt59q8zpa69ax88utyr6es2ar72l7vd6evxct69wcje5cs25ze4qeshejy828h30zkydsu4yrmm',
-      lovelaceToSend: 3000000,
+        'addr_test1qq8tje9aesphf7prfm094utpdkm8x96k0tmh822vjphcqft2523rjrxkm8g4xzxstfqks0gavzlsf9hcz996euj59nzsc72d5p',
+      lovelaceToSend: 285000000,
       assetNameHex: '4c494645',
       assetPolicyIdHex:
         'ae02017105527c6c0c9840397a39cc5ca39fabe5b9998ba70fda5f2f',
@@ -151,6 +156,7 @@ export default class App extends React.Component<any, any> {
       priceMem: 0.0577,
       priceStep: 0.0000721,
       coinsPerUtxoWord: '34482',
+      prod: this.props.product,
     }
 
     this.pollWallets = this.pollWallets.bind(this)
@@ -534,7 +540,7 @@ export default class App extends React.Component<any, any> {
         await this.getAPIVersion()
         await this.getWalletName()
         const walletEnabled = await this.enableWallet()
-        if (walletEnabled) {
+        if (walletEnabled && this) {
           await this.getNetworkId()
           await this.getUtxos()
           await this.getCollateral()
@@ -684,6 +690,8 @@ export default class App extends React.Component<any, any> {
     )
     console.log(submittedTxHash)
     this.setState({ submittedTxHash })
+
+    this.props.setIsSubmittedTxHashSet(true)
   }
 
   buildSendTokenTransaction = async () => {
@@ -1211,4 +1219,47 @@ export default class App extends React.Component<any, any> {
   async componentDidMount() {
     this.pollWallets()
     await this.refreshData()
+    this.setState({
+      lovelaceToSend: this.protocolParams.prod.price.value * 1000000 * 0.4,
+    })
   }
+
+  render() {
+    return (
+      <div style={{ margin: '20px' }}>
+        <div style={{ paddingTop: '10px' }}>
+          <Text>Use A Cardano Wallet For Your Purchase!</Text>
+          <Text>
+            <RadioGroup
+              onChange={this.handleWalletSelect}
+              selectedValue={this.state.whichWalletSelected}
+              inline={true}
+              className="wallets-wrapper"
+            >
+              {this.state.wallets.map((key: any) => (
+                <Radio key={key} className="wallet-label" value={key}>
+                  <img
+                    src={window.cardano[key].icon}
+                    width={24}
+                    height={24}
+                    alt={key}
+                  />
+                  {window.cardano[key].name} ({key})
+                </Radio>
+              ))}
+            </RadioGroup>
+          </Text>
+        </div>
+        <Button
+          style={{ padding: '10px', backgroundColor: 'white', width: '100%' }}
+          onClick={this.buildSendADATransaction}
+        >
+          BUY NOW WITH ADA!
+        </Button>
+        <p style={{ textSizeAdjust: '20' }}>
+          {this.state.submittedTxHash ? 'Thank you for your purchase!' : ''}
+        </p>
+      </div>
+    )
+  }
+}

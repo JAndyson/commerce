@@ -101,6 +101,26 @@ a {
   -webkit-animation-name: fadeIn;
 }
 
+.wallets-wrapper {
+  display: flex;
+}
+
+.wallet-label {
+  display: flex !important;
+  align-items: center;
+  text-color: white;
+}
+
+.wallet-label span {
+  font-size: 20px;
+  font-family: RobotoRegular;
+  font-style: normal;
+  font-weight: normal;
+  color: #272727;
+  overflow: hidden;
+  text-align: center;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -120,3 +140,9 @@ a {
     opacity: 1;
   }
 }
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
