@@ -45,10 +45,6 @@ const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
   ...dynamicProps,
 })
 
-const NamiButton = dynamic(() => import('@components/common/NamiButton'), {
-  ssr: false,
-})
-
 const Modal = dynamic(() => import('@components/ui/Modal'), {
   ...dynamicProps,
   ssr: false,
