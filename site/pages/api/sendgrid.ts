@@ -34,7 +34,7 @@ async function sendEmail(req: any, res: any) {
                 <h3>You've got a new order from ${req.body.fullname}<br> their email is: ✉️${req.body.email}<br>Address: ${req.body.address} </h3>
                 <div style="font-size: 16px;">
                 <p>Wallet Address:</p>
-                <p>${req.body.message}</p>
+                <p>color option: ${req.body.color}<br>${req.body.message}</p>
                 <br>
                 </div>
                 <img src="https://manuarora.in/logo.png" class="logo-image" style="height: 50px;width: 50px;border-radius: 5px;overflow: hidden;">
