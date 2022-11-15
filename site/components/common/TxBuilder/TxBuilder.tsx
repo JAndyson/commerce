@@ -698,7 +698,9 @@ export default class App extends React.Component<any, any> {
     this.pollWallets()
     await this.refreshData()
     this.setState({
-      lovelaceToSend: this.protocolParams.prod.price.value * 1000000 * 0.4,
+      lovelaceToSend: Math.round(
+        (this.protocolParams.prod.price.value * 1000000) / 0.35
+      ),
     })
   }
 

@@ -31,7 +31,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               name={product.name}
               price={
                 `${price} ${product.price?.currencyCode} or ` +
-                `${product.price.value * 0.4} ADA`
+                `${Math.round(product.price.value / 0.35)} ADA`
               }
               fontSize={32}
             />
