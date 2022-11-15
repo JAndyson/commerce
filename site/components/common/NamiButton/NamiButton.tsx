@@ -1212,37 +1212,3 @@ export default class App extends React.Component<any, any> {
     this.pollWallets()
     await this.refreshData()
   }
-
-  render() {
-    return (
-      <div style={{ margin: '20px' }}>
-        <h1>Boilerplate DApp connector to Wallet</h1>
-        <div style={{ paddingTop: '10px' }}>
-          <div style={{ marginBottom: 15 }}>Select wallet:</div>
-          <RadioGroup
-            onChange={this.handleWalletSelect}
-            selectedValue={this.state.whichWalletSelected}
-            inline={true}
-            className="wallets-wrapper"
-          >
-            {this.state.wallets.map((key: any) => (
-              <Radio key={key} className="wallet-label" value={key}>
-                <img
-                  src={window.cardano[key].icon}
-                  width={24}
-                  height={24}
-                  alt={key}
-                />
-                {window.cardano[key].name} ({key})
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
-        <p>
-          <span style={{ fontWeight: 'bold' }}>Wallet Connected: </span>
-          {`${this.state.walletIsEnabled}`}
-        </p>
-      </div>
-    )
-  }
-}
