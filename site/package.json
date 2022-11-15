@@ -19,7 +19,7 @@
   "dependencies": {
     "@blueprintjs/core": "^4.10.2",
     "@blueprintjs/icons": "^4.6.0",
-    "@emurgo/cardano-serialization-lib-asmjs": "10.0.4-beta.4",
+    "@emurgo/cardano-serialization-lib-asmjs": "^11.1.0",
     "@emurgo/cardano-serialization-lib-browser": "^11.0.5",
     "@harmonicpool/cardano-wallet-interface": "https://github.com/HarmonicPool/cardano-wallet-interface",
     "@radix-ui/react-dropdown-menu": "^0.1.6",
