@@ -129,6 +129,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
           subject: product.name,
           message: message,
           address: address,
+          color: selectedOptions.color,
         }),
         headers: {
           'Content-Type': 'application/json',
